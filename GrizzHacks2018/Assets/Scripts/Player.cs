@@ -7,7 +7,7 @@ public class Player : Character {
 
 
 	// Use this for initialization
-	protected virtual void Start () {
+	protected override void Start () {
         base.Start();
 	}
 	
