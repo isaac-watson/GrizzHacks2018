@@ -9,10 +9,13 @@ public abstract class Character : MonoBehaviour {
     protected Animator anim;
 
     [SerializeField]
-    private float speed = 1;
+    private int speed = 1;
+    [SerializeField]
+    protected int health;
 
-	// Use this for initialization
-	protected virtual void Start () {
+
+    // Use this for initialization
+    protected virtual void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 	}
