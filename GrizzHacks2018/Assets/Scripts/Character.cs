@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour {
     protected Animator anim;
 
     [SerializeField]
-    protected float speed = 2;
+    private float speed = 1;
 
 	// Use this for initialization
 	protected virtual void Start () {

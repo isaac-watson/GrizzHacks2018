@@ -25,11 +25,11 @@ public class Player : Character {
         {
             direction += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             direction += Vector2.down;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction += Vector2.left;
         }
@@ -37,13 +37,10 @@ public class Player : Character {
         {
             direction += Vector2.right;
         }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            base.speed = 4;
-        }
-        else
-        {
-            base.speed = 2;
+            direction *= 2;
         }
 
         if(direction == Vector2.zero)
