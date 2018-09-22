@@ -7,9 +7,10 @@ public abstract class Character : MonoBehaviour {
     protected Vector2 direction;
     protected SpriteRenderer spriteRenderer;
     protected Animator anim;
+    protected float speed = 1;
 
     [SerializeField]
-    private float speed = 1;
+    private float game_clock = 1;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -28,6 +29,6 @@ public abstract class Character : MonoBehaviour {
             spriteRenderer.flipX = true;
         if (direction.x > 0)
             spriteRenderer.flipX = false;
-        transform.Translate(direction * Time.deltaTime * speed);
+        transform.Translate(direction * Time.deltaTime * game_clock * speed);
     }
 }
