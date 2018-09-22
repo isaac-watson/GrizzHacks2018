@@ -7,8 +7,8 @@ public class Player : Character {
 
 
 	// Use this for initialization
-	void Start () {
-		
+	protected virtual void Start () {
+        base.Start();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +37,20 @@ public class Player : Character {
         {
             direction += Vector2.right;
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            base.speed = 4;
+        }
+        else
+        {
+            base.speed = 2;
+        }
 
-
+        if(direction == Vector2.zero)
+        {
+            anim.Play("idle");
+        }
+        else
+            anim.Play("run");
     }
 }

@@ -5,13 +5,16 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour {
 
     protected Vector2 direction;
+    SpriteRenderer renderer;
+    protected Animator anim;
 
     [SerializeField]
-    private float speed = 2;
+    protected float speed = 2;
 
 	// Use this for initialization
-	void Start () {
-		
+	protected virtual void Start () {
+        renderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,10 @@ public abstract class Character : MonoBehaviour {
 
     private void moveChar()
     {
+        if (direction.x < 0)
+            renderer.flipX = true;
+        if (direction.x > 0)
+            renderer.flipX = false;
         transform.Translate(direction * Time.deltaTime * speed);
     }
 }
