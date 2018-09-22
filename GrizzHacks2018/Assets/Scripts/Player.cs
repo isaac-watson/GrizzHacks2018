@@ -33,7 +33,7 @@ public class Player : Character {
         {
             direction += Vector2.left;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             direction += Vector2.right;
         }
