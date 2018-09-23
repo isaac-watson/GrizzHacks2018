@@ -11,8 +11,6 @@ public abstract class Character : MonoBehaviour {
 
     [SerializeField]
     private float game_clock = 1;
-    [SerializeField]
-    protected int health;
 
     // Use this for initialization
     protected virtual void Start () {
