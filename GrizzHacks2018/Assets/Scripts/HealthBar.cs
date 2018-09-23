@@ -1,28 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
 
     [SerializeField]
-    private float fillAmount;
+    protected Image content;
 
     [SerializeField]
-    private Image content;
+    protected float fillAmount;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    //private Player player;
+    //private GameObject playerObject;
+    protected int[] stats;
+    protected float currentHp;
+    protected float maxHp;
+
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
+        stats = PlayerData.GetPlayerStats();
+        currentHp = stats[4];
+        maxHp = stats[0];
         HandleBar();
+       // print(HpValue(currentHp, maxHp));
 	}
 
-    private void HandleBar()
+    protected void HandleBar()
     {
+        content.fillAmount = HpValue(currentHp, maxHp);
+       // content.fillAmount = fillAmount;
+    }
+
+    private float HpValue(float currHp, float maxHp)
+    {
+            return (float)(currHp / maxHp);
         
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class Character : MonoBehaviour {
 
@@ -30,9 +31,19 @@ public abstract class Character : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        print("Hit something. Going back to (" + oldPos.x + ", " + oldPos.y + ")");
-        newPos = oldPos;
-        transform.position = oldPos;
+        switch (collision.gameObject.tag)
+        {
+            case "Enemy":
+                print("collided");
+                SceneManager.LoadScene(sceneName: "Battle-1");
+                break;
+            default:
+                print("Hit something. Going back to (" + oldPos.x + ", " + oldPos.y + ")");
+                newPos = oldPos;
+                transform.position = oldPos;
+                break;
+        }
+        
     }
 
     private void MoveChar()
