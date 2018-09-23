@@ -4,13 +4,12 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour {
 
-    protected Vector2 direction;
+    protected Vector3 direction;
     protected SpriteRenderer spriteRenderer;
     protected Animator anim;
     protected float speed = 1;
-    protected float startTime;
-    protected bool inProcessOfMoving = false;
-    protected Vector2 lastSafeLocation, lastSafeDirection, nextSafeLocation;
+    protected Vector3 newPos;
+    protected Vector3 oldPos;
 
     [SerializeField]
     private float game_clock = 1;
@@ -19,37 +18,33 @@ public abstract class Character : MonoBehaviour {
     protected virtual void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        nextSafeLocation = transform.position;
+        newPos = transform.position;
+        oldPos = transform.position;
     }
-	
-	// Update is called once per frame
-	protected virtual void Update () {
+
+    // Update is called once per frame
+    protected virtual void Update()
+    {
         MoveChar();
-	}
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        print("Hit something. Going back to (" + oldPos.x + ", " + oldPos.y + ")");
+        newPos = oldPos;
+        transform.position = oldPos;
+    }
 
     private void MoveChar()
     {
-        if (!inProcessOfMoving && direction != Vector2.zero)
+        if (newPos != transform.position)
         {
-            inProcessOfMoving = true;
-            lastSafeLocation = (Vector2)transform.position;
-            nextSafeLocation = (Vector2)transform.position + direction;
-            lastSafeDirection = direction;
-            if (direction.x < 0)
+            if (newPos.x - transform.position.x < 0)
                 spriteRenderer.flipX = true;
-            if (direction.x > 0)
+            else if (newPos.x - transform.position.x > 0)
                 spriteRenderer.flipX = false;
-            startTime = Time.realtimeSinceStartup;
-        }
-        if (Time.realtimeSinceStartup - startTime < 1 / speed)
-        {
-            transform.Translate(Time.deltaTime * lastSafeDirection * speed);
-        }
-        else
-        {
-            transform.SetPositionAndRotation(nextSafeLocation, transform.rotation);
-            lastSafeDirection = Vector2.zero;
-            inProcessOfMoving = false;
+
+            transform.position = Vector3.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
         }
     }
 }
