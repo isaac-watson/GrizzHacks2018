@@ -8,6 +8,8 @@ public class BattleMenuSelector : MonoBehaviour {
     //arrowPos = 0 means option 1 of menu, arrowPos = 1 means option 2 of menu
     private int arrowPos = 1;
     private bool playerTurn;
+    private float decay;
+    
     //private GameObject slimeObject;
    // private GameObject playerObject;
     //private int[] slime;
@@ -49,18 +51,25 @@ public class BattleMenuSelector : MonoBehaviour {
 
             }
             int[] slime = PlayerData.GetEnemyStats();
-            if (Input.GetKey(KeyCode.A) && arrowPos == 1)
+            GameObject projectile = gameObject.transform.Find("ball_0").gameObject;
+            
+            if (Input.GetKeyDown(KeyCode.A) && arrowPos == 1 )
             {
-                print("YOU dealt "+ PlayerData.GetPlayerStats()[1] + "damage");
-                
+                decay = 5f;
+                Reset();
+                projectile.SetActive(true);
+                print("YOU dealt " + PlayerData.GetPlayerStats()[1] + "damage");
+
                 slime[4] -= PlayerData.GetPlayerStats()[1];
                 PlayerData.SetEnemyStats(slime);
                 playerTurn = false;
+                    
                 print("slime hp: " + PlayerData.GetEnemyStats()[4]);
-                if(slime[4] > 0)
+                if (slime[4] > 0)
                     EnemyTurn();
                 else
                     SceneManager.LoadScene(sceneName: "map2");
+                
             } else if(Input.GetKey(KeyCode.A) && arrowPos == -1)
             {
                 print("collided");
@@ -79,5 +88,16 @@ public class BattleMenuSelector : MonoBehaviour {
             playerTurn = true;
         else
             SceneManager.LoadScene(sceneName: "map2");
+    }
+    private void Reset()
+    {
+        if (decay > 0)
+        {
+            decay -= Time.deltaTime;
+        }
+        if (decay < 0)
+        {
+            decay = 0;
+        }
     }
 }
