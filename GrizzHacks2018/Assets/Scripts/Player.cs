@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : CharacterStats {
 
 
-    private int hp = 30;
+    private int hp = 20;
     private int att = 1;
     private int def = 0;
     private int battleSpeed = 1;
@@ -17,8 +17,14 @@ public class Player : CharacterStats {
     protected override void Start () {
         base.Start();
         SetCharStats(hp, att, def, battleSpeed);
+        if (PlayerData.GetPlayerInit() == false)
+        {
+            PlayerData.SetPlayerStats(charStats);
+            PlayerData.SetPlayerInit();
+        }
 
     }
+
 	
 	// Update is called once per frame
 	protected override void Update () {

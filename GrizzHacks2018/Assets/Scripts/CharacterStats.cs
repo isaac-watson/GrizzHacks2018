@@ -19,30 +19,13 @@ public abstract class CharacterStats : Character {
 
     protected void SetCharStats(int health, int attack, int defence, int battleSpeed)
     {
-        charStats[0] = health;
+        charStats[0] = health; //maxHealth
         charStats[1] = attack;
         charStats[2] = defence;
         charStats[3] = battleSpeed;
-        charStats[4] = health;
+        charStats[4] = health; //currentHealth
     }
-
-    public void SetCurrHP(int hp)
-    {
-        charStats[4] = hp;
-    }
-    public void SetAttack(int attack)
-    {
-        charStats[1] = attack;
-    }
-    public void SetDefence(int defence)
-    {
-        charStats[2] = defence;
-    }
-    public void SetSpeed(int battleSpeed)
-    {
-        charStats[3] = battleSpeed;
-    }
-    public int[] getCharStats()
+    public int[] GetCharStats()
     {
         return charStats;
     }

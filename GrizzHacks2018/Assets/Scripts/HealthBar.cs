@@ -3,42 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : CharacterStats {
+public class HealthBar : MonoBehaviour {
 
     [SerializeField]
-    private Image content;
+    protected Image content;
 
     [SerializeField]
-    private float fillAmount;
+    protected float fillAmount;
 
-    private Player player;
-    private int[] stats;
-    private int currentHp;
-    private int maxHp;
+    //private Player player;
+    //private GameObject playerObject;
+    protected int[] stats;
+    protected float currentHp;
+    protected float maxHp;
 
-    
-
-	// Use this for initialization
-	protected override void Start () {
-        player = new Player();
-        stats = player.getCharStats();
+	// Update is called once per frame
+	protected virtual void Update () {
+        stats = PlayerData.GetPlayerStats();
         currentHp = stats[4];
         maxHp = stats[0];
-	}
-	
-	// Update is called once per frame
-	protected override void Update () {
         HandleBar();
+       // print(HpValue(currentHp, maxHp));
 	}
 
-    private void HandleBar()
+    protected void HandleBar()
     {
-        //content.fillAmount = HpValue(currentHp, maxHp);
-        content.fillAmount = fillAmount;
+        content.fillAmount = HpValue(currentHp, maxHp);
+       // content.fillAmount = fillAmount;
     }
 
-    private float HpValue(int currHp, int maxHp)
+    private float HpValue(float currHp, float maxHp)
     {
-        return currHp / maxHp;
+            return (float)(currHp / maxHp);
+        
     }
 }
