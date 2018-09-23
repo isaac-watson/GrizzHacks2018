@@ -10972,15 +10972,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_clock: 1
-<<<<<<< HEAD:GrizzHacks2018/Assets/Scenes/map3.unity
 <<<<<<< HEAD:GrizzHacks2018/Assets/map3.unity
   inBattle: 1
 =======
   inBattle: 0
 >>>>>>> f32d6d107341cd04a5b488fa0caaeedd48679eb9:GrizzHacks2018/Assets/Scenes/map3.unity
-=======
-  inBattle: 0
->>>>>>> 94747b19c550b0e90e7a1ab11a3a7fd7b3915303:GrizzHacks2018/Assets/Scenes/map3.unity
 --- !u!95 &556816774
 Animator:
   serializedVersion: 3
