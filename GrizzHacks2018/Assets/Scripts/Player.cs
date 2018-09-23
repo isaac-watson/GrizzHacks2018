@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : CharacterStats {
 
 
-    private int hp = 20;
+    private int hp = 25;
     private int att = 1;
     private int def = 0;
     private int battleSpeed = 1;
