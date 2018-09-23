@@ -34,12 +34,13 @@ public class Player : CharacterStats {
 
     private void GetInput()
     {
-        if (inBattle == false)
+        if (!inBattle)
         {
             if (Input.GetKey(KeyCode.UpArrow) && newPos == transform.position)
             {
                 newPos += Vector3.up;
                 oldPos = transform.position;
+                print("Updated newPos to " + newPos.x + ", " + newPos.y);
             }
             else if (Input.GetKey(KeyCode.DownArrow) && newPos == transform.position)
             {
