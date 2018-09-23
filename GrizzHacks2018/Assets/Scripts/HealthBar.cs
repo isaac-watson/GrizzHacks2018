@@ -31,7 +31,7 @@ public class HealthBar : MonoBehaviour {
         content.fillAmount = HpValue(currentHp, maxHp);
        // content.fillAmount = fillAmount;
     }
-    
+
     private float HpValue(float currHp, float maxHp)
     {
             return (float)(currHp / maxHp);

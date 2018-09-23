@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : CharacterStats {
 
 
-    private int hp = 20;
+    private int hp = 25;
     private int att = 1;
     private int def = 0;
     private int battleSpeed = 1;
@@ -34,12 +34,13 @@ public class Player : CharacterStats {
 
     private void GetInput()
     {
-        if (inBattle == false)
+        if (!inBattle)
         {
             if (Input.GetKey(KeyCode.UpArrow) && newPos == transform.position)
             {
                 newPos += Vector3.up;
                 oldPos = transform.position;
+                print("Updated newPos to " + newPos.x + ", " + newPos.y);
             }
             else if (Input.GetKey(KeyCode.DownArrow) && newPos == transform.position)
             {
