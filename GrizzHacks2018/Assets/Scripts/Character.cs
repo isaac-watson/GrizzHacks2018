@@ -8,6 +8,9 @@ public abstract class Character : MonoBehaviour {
     protected SpriteRenderer spriteRenderer;
     protected Animator anim;
     protected float speed = 1;
+    protected float startTime;
+    protected bool inProcessOfMoving = false;
+    protected Vector2 lastSafeLocation, lastSafeDirection, nextSafeLocation;
 
     [SerializeField]
     private float game_clock = 1;
@@ -16,7 +19,8 @@ public abstract class Character : MonoBehaviour {
     protected virtual void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-	}
+        nextSafeLocation = transform.position;
+    }
 	
 	// Update is called once per frame
 	protected virtual void Update () {
@@ -25,10 +29,27 @@ public abstract class Character : MonoBehaviour {
 
     private void MoveChar()
     {
-        if (direction.x < 0)
-            spriteRenderer.flipX = true;
-        if (direction.x > 0)
-            spriteRenderer.flipX = false;
-        transform.Translate(direction * Time.deltaTime * game_clock * speed);
+        if (!inProcessOfMoving && direction != Vector2.zero)
+        {
+            inProcessOfMoving = true;
+            lastSafeLocation = (Vector2)transform.position;
+            nextSafeLocation = (Vector2)transform.position + direction;
+            lastSafeDirection = direction;
+            if (direction.x < 0)
+                spriteRenderer.flipX = true;
+            if (direction.x > 0)
+                spriteRenderer.flipX = false;
+            startTime = Time.realtimeSinceStartup;
+        }
+        if (Time.realtimeSinceStartup - startTime < 1 / speed)
+        {
+            transform.Translate(Time.deltaTime * lastSafeDirection * speed);
+        }
+        else
+        {
+            transform.SetPositionAndRotation(nextSafeLocation, transform.rotation);
+            lastSafeDirection = Vector2.zero;
+            inProcessOfMoving = false;
+        }
     }
 }

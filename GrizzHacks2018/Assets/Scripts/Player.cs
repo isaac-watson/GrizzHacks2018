@@ -47,9 +47,15 @@ public class Player : CharacterStats {
         if (Input.GetKey(KeyCode.LeftShift))
         {
             direction *= 2;
+            speed = 6;
+        }
+        else
+        {
+            speed = 4;
         }
 
         if(direction == Vector2.zero)
+        if(lastSafeDirection == Vector2.zero && direction == Vector2.zero)
         {
             anim.Play("idle");
         }
