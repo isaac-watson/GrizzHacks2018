@@ -2279,6 +2279,7 @@ GameObject:
   - component: {fileID: 581734282}
   - component: {fileID: 581734281}
   - component: {fileID: 581734280}
+  - component: {fileID: 581734283}
   m_Layer: 0
   m_Name: slime-blue_0
   m_TagString: Untagged
@@ -2363,6 +2364,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581734283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 581734279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d600a3c99dcdb784ca3ea65c8771dde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game_clock: 1
 --- !u!1 &834285499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2385,8 @@ GameObject:
   m_Component:
   - component: {fileID: 834285501}
   - component: {fileID: 834285500}
+  - component: {fileID: 834285502}
+  - component: {fileID: 834285503}
   m_Layer: 0
   m_Name: gabe-idle-run_0
   m_TagString: Untagged
@@ -2438,6 +2453,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834285502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 834285499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7c6fea58908b74c86a27be5feb31d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game_clock: 1
+  inBattle: 1
+--- !u!95 &834285503
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 834285499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb5f7ae9f0e637c4699da68313d46290, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &860226218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2494,7 @@ GameObject:
   - component: {fileID: 860226221}
   - component: {fileID: 860226220}
   - component: {fileID: 860226219}
+  - component: {fileID: 860226222}
   m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
@@ -2532,6 +2579,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860226222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860226218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb59ce54f6056a94c973e877f555381a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &912455086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,7 +3224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -375.68, y: -214.11}
+  m_AnchoredPosition: {x: -375.65, y: -214.11}
   m_SizeDelta: {x: 32, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296347201
@@ -3214,6 +3272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b11ed057b6ca46439028cdf23a6ae6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_clock: 1
+  content: {fileID: 1864224310}
   fillAmount: 0
 --- !u!1 &1304995625
 GameObject:
